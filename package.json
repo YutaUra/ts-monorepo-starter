@@ -11,15 +11,21 @@
   },
   "scripts": {
     "commit": "git-cz --disable-emoji",
-    "git-hooks:pre-commit": "lint-staged",
+    "git-hooks:pre-commit": "run-s lint-staged validate",
     "git-hooks:commit-msg": "commitlint --edit $1",
-    "check": "yarn check:format",
-    "check:format": "prettier . -c",
+    "lint-staged": "lint-staged",
+    "validate": "run-p validate:*",
+    "validate:format": "lerna exec --parallel -- yarn prettier src -c",
+    "validate:lint": "lerna exec --parallel -- yarn eslint src --ext ts,js",
+    "validate:type": "lerna exec --parallel -- yarn tsc --noEmit",
     "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,ts,md,json,yml}": [
       "prettier -w"
+    ],
+    "*.{js,ts}": [
+      "eslint --fix"
     ]
   },
   "config": {
@@ -36,11 +42,19 @@
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@types/jest": "^26.0.23",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/parser": "^4.25.0",
     "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.23.4",
     "git-cz": "^4.7.6",
     "husky": "^6.0.0",
     "lerna": "^4.0.0",
     "lint-staged": "^11.0.0",
-    "prettier": "^2.3.0"
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.3.0",
+    "typescript": "^4.3.2"
   }
 }
