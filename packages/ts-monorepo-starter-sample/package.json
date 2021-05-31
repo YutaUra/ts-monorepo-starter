@@ -1,0 +1,9 @@
+{
+  "name": "@yutaura/ts-monorepo-starter-sample",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "YutaUra <yuuta3594@outlook.jp>",
+  "license": "ISC",
+  "main": "lib/ts-monorepo-starter-sample.js",
+  "scripts": {}
+}
