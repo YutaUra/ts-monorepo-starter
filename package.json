@@ -1,0 +1,9 @@
+{
+  "name": "ts-monorepo-starter",
+  "repository": "git@github.com:YutaUra/ts-monorepo-starter.git",
+  "author": "YutaUra <yuuta3594@outlook.jp>",
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
