@@ -11,8 +11,16 @@
   },
   "scripts": {
     "commit": "git-cz --disable-emoji",
+    "git-hooks:pre-commit": "lint-staged",
     "git-hooks:commit-msg": "commitlint --edit $1",
+    "check": "yarn check:format",
+    "check:format": "prettier . -c",
     "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,ts,md,json,yml}": [
+      "prettier -w"
+    ]
   },
   "config": {
     "commitizen": {
@@ -31,6 +39,8 @@
     "cz-conventional-changelog": "^3.3.0",
     "git-cz": "^4.7.6",
     "husky": "^6.0.0",
-    "lerna": "^4.0.0"
+    "lerna": "^4.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.0"
   }
 }
