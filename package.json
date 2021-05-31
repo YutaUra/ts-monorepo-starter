@@ -3,7 +3,33 @@
   "repository": "git@github.com:YutaUra/ts-monorepo-starter.git",
   "author": "YutaUra <yuuta3594@outlook.jp>",
   "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "commit": "git-cz --disable-emoji",
+    "git-hooks:commit-msg": "commitlint --edit $1",
+    "prepare": "husky install"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "git-cz": "^4.7.6",
+    "husky": "^6.0.0",
     "lerna": "^4.0.0"
   }
 }
