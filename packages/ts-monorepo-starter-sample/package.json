@@ -5,5 +5,8 @@
   "author": "YutaUra <yuuta3594@outlook.jp>",
   "license": "ISC",
   "main": "lib/ts-monorepo-starter-sample.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {}
 }
