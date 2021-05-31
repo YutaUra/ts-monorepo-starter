@@ -27,5 +27,6 @@
     "plugin:import/typescript",
     "prettier"
   ],
-  "rules": {}
+  "rules": {},
+  "ignorePatterns": ["jest.config.js"]
 }

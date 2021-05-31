@@ -33,24 +33,10 @@ jobs:
       - name: Install
         run: npx lerna bootstrap --ci
 
-      # - name: Lint
-      #   run: |
-      #     npm run lint
-      #     npm run format:check
-
-      # - name: Test
-      #   run: npm run test
-      #   env:
-      #     CI: true
-
       # - name: Build
       #   run: npm run build
       #   env:
       #     CI: true
-
-      # - name: Report coverage
-      #   if: startsWith(matrix.node-version, '14')
-      #   uses: codecov/codecov-action@v1
 
       # - name: Generate docs
       #   if: success() && startsWith(matrix.node-version, '14') && github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -74,3 +60,63 @@ jobs:
           CI: true
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  validate:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 16]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install
+        run: npx lerna bootstrap --ci
+
+      - name: Lint
+        run: yarn validate
+
+  test:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 16]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install
+        run: npx lerna bootstrap --ci
+
+      - name: Test
+        run: yarn test
+        env:
+          CI: true
+
+      - name: Report coverage
+        if: startsWith(matrix.node-version, '14')
+        uses: codecov/codecov-action@v1

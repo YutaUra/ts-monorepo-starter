@@ -18,6 +18,9 @@
     "validate:format": "lerna exec --parallel -- yarn prettier src -c",
     "validate:lint": "lerna exec --parallel -- yarn eslint src --ext ts,js",
     "validate:type": "lerna exec --parallel -- yarn tsc --noEmit",
+    "validate:test": "jest",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
     "prepare": "husky install"
   },
   "lint-staged": {
@@ -51,10 +54,12 @@
     "eslint-plugin-import": "^2.23.4",
     "git-cz": "^4.7.6",
     "husky": "^6.0.0",
+    "jest": "^27.0.3",
     "lerna": "^4.0.0",
     "lint-staged": "^11.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.0",
+    "ts-jest": "^27.0.2",
     "typescript": "^4.3.2"
   }
 }
