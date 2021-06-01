@@ -33,11 +33,13 @@ jobs:
       - name: Install
         run: npx lerna bootstrap --ci
 
-      - name: Validate
-        run: yarn validate
-
       - name: Build
         run: yarn build
+        env:
+          CI: true
+
+      - name: Validate
+        run: yarn validate
         env:
           CI: true
 
