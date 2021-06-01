@@ -1,3 +1,3 @@
-export const hello = (): void => {
-  console.log('Hello World')
-}
+import { hello } from '@yutaura/ts-monorepo-starter-sample-lib'
+
+hello()

@@ -1,5 +1,5 @@
 {
-  "name": "@yutaura/ts-monorepo-starter-sample",
+  "name": "@yutaura/ts-monorepo-starter-sample-lib",
   "version": "0.1.2",
   "description": "> TODO: description",
   "author": "YutaUra <yuuta3594@outlook.jp>",
@@ -19,7 +19,5 @@
     "build:code": "rollup -c",
     "build:types": "tsc -p tsconfig.build.json"
   },
-  "dependencies": {
-    "@yutaura/ts-monorepo-starter-sample-lib": "^0.1.2"
-  }
+  "dependencies": {}
 }
