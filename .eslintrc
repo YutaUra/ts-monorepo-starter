@@ -27,6 +27,9 @@
     "plugin:import/typescript",
     "prettier"
   ],
-  "rules": {},
-  "ignorePatterns": ["jest.config.js"]
+  "rules": {
+    "@typescript-eslint/no-unsafe-assignment": ["off"],
+    "@typescript-eslint/no-unsafe-argument": ["off"]
+  },
+  "ignorePatterns": ["jest.config.js", "dist", "rollup.config.base.js"]
 }
