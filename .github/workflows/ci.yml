@@ -120,3 +120,5 @@ jobs:
       - name: Report coverage
         if: startsWith(matrix.node-version, '14')
         uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
