@@ -3,3 +3,6 @@ node_modules
 
 ## log
 lerna-debug.log
+
+## coverage
+coverage

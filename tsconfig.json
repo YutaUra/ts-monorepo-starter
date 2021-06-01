@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.strict.json",
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  }
+}
